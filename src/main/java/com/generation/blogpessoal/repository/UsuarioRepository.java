@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.generation.blogpessoal.model.Usuario;
 
+@Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> { 
 	
 	//Herdando as funçoes do JPA (Manipula o nosso banco de dados), faz essa comunicação com o banco de dados
