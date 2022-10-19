@@ -40,13 +40,16 @@ public class UsuarioController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Usuario> getById(@PathVariable long id) {
-		return repository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
+		return repository.findById(id)
+				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
 	@PostMapping("/logar")
-	public ResponseEntity<UsuarioLogin> autenticationUsuario(@RequestBody Optional<UsuarioLogin> usuario) {
-		return service.logarUsuario(usuario).map(resposta -> ResponseEntity.ok(resposta))
+	public ResponseEntity<UsuarioLogin> autenticationUsuario(
+			@RequestBody Optional<UsuarioLogin> username) {
+		return service.logarUsuario(username)
+				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 
